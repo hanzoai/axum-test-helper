@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/hero.svg" alt="axum-test-helper" width="880"></p>
+
 # axum-test-helper
 
 `axum-test-helper` exposes [`axum`] original TestClient, which is private to the [`axum`] crate
