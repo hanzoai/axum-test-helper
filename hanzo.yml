@@ -1,0 +1,6 @@
+# Rust library — ships from a crates.io tag, builds no image.
+# The gate is the crate's own suite (3 tokio tests in src/lib.rs); it goes red
+# the moment the helper stops round-tripping a request through axum.
+test:
+  - name: test
+    run: cargo test --workspace
