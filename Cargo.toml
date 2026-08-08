@@ -16,7 +16,11 @@ reqwest = { version = "0.11", features = ["json", "stream", "multipart", "rustls
 http = "1.1"
 http-body = "1.0"
 bytes = "1.4"
-tower = "0.4"
+# `make` is not in tower's default features, and src/lib.rs line 49 is
+# `use tower::make::Shared;` — without it the module is gated out and the
+# build stops at E0432 "unresolved import", pointing at tower's own
+# `#[cfg(feature = "make")]` rather than at this manifest.
+tower = { version = "0.4", features = ["make"] }
 tower-service = "0.3"
 serde = "1.0"
 tokio = "1"
@@ -32,3 +36,4 @@ default = ["withtrace"]
 cookies = ["reqwest/cookies"]
 withtrace = []
 withouttrace = []
+
